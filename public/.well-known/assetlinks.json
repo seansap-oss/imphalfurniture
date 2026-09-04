@@ -1,1 +1,1 @@
-[{"relation":["delegate_permission/common.handle_all_urls"],"target":{"namespace":"android_app","package_name":"com.imphalfurniture.twa","sha256_cert_fingerprints":["03:C0:B5:E0:FE:4A:21:C5:1A:19:85:8A:44:3B:A2:D5:1A:26:2B:9D:63:CE:75:F7:BB:2A:F1:0D:9B:B0:54:E5"]}}]
+[{"relation":["delegate_permission/common.handle_all_urls"],"target":{"namespace":"android_app","package_name":"com.imphalfurniture.twa","sha256_cert_fingerprints":["62:BE:0A:1B:12:07:7D:2E:22:8C:BC:03:56:FA:5D:87:ED:B8:E0:CB:A9:29:F1:15:44:BC:90:35:48:5F:18:F7"]}}]

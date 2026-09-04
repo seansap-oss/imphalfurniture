@@ -7,7 +7,11 @@ export async function POST(req: Request) {
   const files = fd.getAll("files") as File[];
   if (!files.length) return NextResponse.json({ ok: false, error: "No files." }, { status: 400 });
   const dir = path.join(process.cwd(), "public", "uploads");
-  await fs.mkdir(dir, { recursive: true });
+  try {
+    await fs.mkdir(dir, { recursive: true });
+  } catch {
+    return NextResponse.json({ ok: false, error: "Upload storage not configured on this host (needs object storage)." }, { status: 500 });
+  }
   const saved: string[] = [];
   for (const f of files.slice(0, 10)) {
     if (f.size > 8 * 1024 * 1024) continue;

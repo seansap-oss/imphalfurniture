@@ -10,3 +10,10 @@ public/uploads/*
 tsconfig.tsbuildinfo
 .vercel
 .env*
+
+# Android signing + build outputs (BACK UP android.keystore!)
+android/*.keystore
+android/app/build
+android/app/release
+*.apk
+*.aab

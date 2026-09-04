@@ -24,15 +24,15 @@ def twaManifest = [
     applicationId: 'com.imphalfurniture.twa',
     hostName: 'imphalfurniture.vercel.app', // The domain being opened in the TWA.
     launchUrl: '/', // The start path for the TWA. Must be relative to the domain.
-    name: 'imphalfurniture — Furniture for every room in Imphal', // The application name.
-    launcherName: 'imphalfurniture', // The name shown on the Android Launcher.
-    themeColor: '#FFD400', // The color used for the status bar.
+    name: 'Planet Interio — Furniture for good living', // The application name.
+    launcherName: 'Planet Interio', // The name shown on the Android Launcher.
+    themeColor: '#D21F26', // The color used for the status bar.
     themeColorDark: '#000000', // The color used for the dark status bar.
     navigationColor: '#111111', // The color used for the navigation bar.
     navigationColorDark: '#000000', // The color used for the dark navbar.
-    navigationDividerColor: '#FFD400', // The navbar divider color.
+    navigationDividerColor: '#D21F26', // The navbar divider color.
     navigationDividerColorDark: '#000000', // The dark navbar divider color.
-    backgroundColor: '#FFD400', // The color used for the splash screen background.
+    backgroundColor: '#D21F26', // The color used for the splash screen background.
     enableNotifications: false, // Set to true to enable notification delegation.
     // Every shortcut must include the following fields:
     // - name: String that will show up in the shortcut.
@@ -57,8 +57,8 @@ android {
         applicationId "com.imphalfurniture.twa"
         minSdkVersion 21
         targetSdkVersion 36
-        versionCode 1
-        versionName "1.0.0"
+        versionCode 2
+        versionName "1.1.0"
 
         // The name for the application
         resValue "string", "appName", twaManifest.name

@@ -1,0 +1,1 @@
+export default function Profile() { return <div className="max-w-3xl mx-auto p-6"><h1 className="text-2xl font-extrabold">Profile</h1><p className="text-sm text-gray-500">Manage name, mobile and password in the full build; session persists across PWA installs.</p></div>; }

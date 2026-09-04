@@ -1,0 +1,21 @@
+generator client { provider = "prisma-client-js" }
+datasource db { provider = "postgresql"; url = env("DATABASE_URL") }
+
+model User { id String @id @default(cuid()); email String @unique; hash String; first String?; last String?; mobile String?; createdAt DateTime @default(now()); addresses Address[]; orders Order[]; reviews Review[]; wishlists Wishlist[] }
+model Address { id String @id @default(cuid()); userId String; user User @relation(fields: [userId], references: [id]); name String; phone String; line1 String; city String; state String; pin String; country String @default("India") }
+model AdminUser { id String @id @default(cuid()); email String @unique; hash String; role String @default("ADMIN") }
+model Brand { id String @id @default(cuid()); name String; slug String @unique; logo String?; desc String?; url String?; active Boolean @default(true); sort Int @default(0) }
+model Category { id String @id @default(cuid()); name String; slug String @unique; parentId String?; desc String?; image String?; banner String?; sort Int @default(0); active Boolean @default(true) }
+model Product { id String @id @default(cuid()); name String; slug String @unique; sku String @unique; brandId String?; categoryId String?; price Int; mrp Int; stock Int @default(0); desc String?; active Boolean @default(true); variants ProductVariant[]; images ProductImage[] }
+model ProductVariant { id String @id @default(cuid()); productId String; product Product @relation(fields: [productId], references: [id]); sku String @unique; colour String?; size String?; price Int; stock Int }
+model ProductImage { id String @id @default(cuid()); productId String; product Product @relation(fields: [productId], references: [id]); url String; alt String?; sort Int @default(0) }
+model InventoryLocation { id String @id @default(cuid()); name String; address String?; pickup Boolean @default(true); delivery Boolean @default(true); active Boolean @default(true) }
+model InventoryMovement { id String @id @default(cuid()); sku String; qty Int; type String; note String?; createdAt DateTime @default(now()) }
+model Order { id String @id @default(cuid()); number String @unique; email String; status String @default("Pending"); subtotal Int; delivery Int; total Int; pay String; createdAt DateTime @default(now()) }
+model Coupon { id String @id @default(cuid()); code String @unique; type String; amount Int; minOrder Int @default(0); active Boolean @default(true) }
+model Review { id String @id @default(cuid()); productSlug String; rating Int; headline String?; body String?; verified Boolean @default(false); approved Boolean @default(false); userId String?; user User? @relation(fields: [userId], references: [id]) }
+model HeroSlide { id String @id @default(cuid()); title String; sub String?; cta String?; href String?; image String?; video String?; active Boolean @default(true); sort Int @default(0) }
+model MediaAsset { id String @id @default(cuid()); url String; kind String; size Int?; createdAt DateTime @default(now()) }
+model DeliveryZone { id String @id @default(cuid()); label String; pins String[]; charge Int; freeAbove Int; days String }
+model ContactSubmission { id String @id @default(cuid()); name String; email String; topic String?; message String; createdAt DateTime @default(now()) }
+model AdminAuditLog { id String @id @default(cuid()); email String; action String; resource String?; createdAt DateTime @default(now()) }

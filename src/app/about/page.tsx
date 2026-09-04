@@ -1,0 +1,2 @@
+import Simple from "@/components/Simple";
+export default function About() { return <Simple title="About imphalfurniture"><p>We are an Imphal-based furniture retailer serving Manipur and the North-East with honest INR pricing, local delivery crews and Click & Collect from Kwakeithel Bazar.</p><p>Every price on this site is in Indian Rupees (₹) and every delivery promise is planned from Imphal first — not from a distant metro warehouse.</p></Simple>; }

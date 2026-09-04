@@ -1,0 +1,2 @@
+import Simple from "@/components/Simple";
+export default function Returns() { return <Simple title="Cancellations, Returns & Warranty"><p>Cancel any time before dispatch from My Orders for a full refund to source (3–5 days) or store credit.</p><p>7-day returns for damage, wrong item or manufacturing defects with free Imphal collection. 12-month manufacturing warranty on frames, joinery and mechanisms; mattresses carry brand warranty.</p><p>Raise a request from Account → Orders → Request return with a photo. Our Imphal team schedules collection.</p></Simple>; }

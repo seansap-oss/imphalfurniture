@@ -1,0 +1,1 @@
+export default function Recent() { return <div className="max-w-3xl mx-auto p-6"><h1 className="text-2xl font-extrabold">Recently Viewed</h1><p className="text-sm text-gray-500">Your browsing history lives on this device.</p></div>; }

@@ -17,3 +17,6 @@ android/app/build
 android/app/release
 *.apk
 *.aab
+android/build
+android/.gradle
+android/build.log

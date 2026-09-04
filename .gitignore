@@ -7,3 +7,4 @@ public/uploads/*
 !public/uploads/.gitkeep
 .env*.local
 *.log
+tsconfig.tsbuildinfo

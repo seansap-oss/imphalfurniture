@@ -18,11 +18,11 @@ export default function HeroCarousel() {
         <div>
           <h1 className="text-3xl sm:text-5xl font-extrabold drop-shadow">{h.title}</h1>
           <p className="mt-2 text-white/90">{h.sub}</p>
-          <Link href={h.href} className="inline-block mt-4 bg-[#FFD400] text-black font-extrabold px-8 py-3 rounded-full min-h-[44px]">{h.cta}</Link>
+          <Link href={h.href} className="inline-block mt-4 bg-[#D21F26] text-white font-extrabold px-8 py-3 rounded-full min-h-[44px]">{h.cta}</Link>
         </div>
       </div>
       <div className="absolute bottom-3 w-full flex justify-center gap-2">
-        {HEROES.map((_, k) => <button key={k} aria-label={`Slide ${k + 1}`} onClick={() => setI(k)} className={`h-2.5 rounded-full ${k === i ? "w-8 bg-[#FFD400]" : "w-2.5 bg-white/60"}`} />)}
+        {HEROES.map((_, k) => <button key={k} aria-label={`Slide ${k + 1}`} onClick={() => setI(k)} className={`h-2.5 rounded-full ${k === i ? "w-8 bg-[#D21F26] text-white" : "w-2.5 bg-white/60"}`} />)}
       </div>
     </section>
   );

@@ -39,7 +39,7 @@ export default function Home() {
             <Link key={h.title} href={h.href} className="relative rounded-2xl overflow-hidden aspect-video">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={h.image} alt={h.title} loading="lazy" className="absolute inset-0 w-full h-full object-cover" />
-              <span className="absolute bottom-3 left-3 bg-[#FFD400] font-extrabold text-sm px-4 py-2 rounded-full">{h.title}</span>
+              <span className="absolute bottom-3 left-3 bg-[#D21F26] text-white font-extrabold text-sm px-4 py-2 rounded-full">{h.title}</span>
             </Link>
           ))}
         </div>
@@ -53,7 +53,7 @@ export default function Home() {
       </section>
 
       <section className="max-w-7xl mx-auto px-3 sm:px-4 mt-8" aria-label="Why shop with us">
-        <h2 className="text-xl sm:text-2xl font-extrabold mb-3">Why shop imphalfurniture</h2>
+        <h2 className="text-xl sm:text-2xl font-extrabold mb-3">Why shop Planet Interio</h2>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
           {[["Great Value", "Honest INR pricing"], ["Easy Ordering", "Guest & account checkout"], ["Local Support", "Imphal-based help"], ["Secure Payment", "UPI, cards & COD"], ["Fast Delivery", "Imphal-first zones"], ["Easy Returns", "7-day promise"]].map(([t, s]) => (
             <div key={t} className="bg-white rounded-2xl p-4 border text-center"><p className="font-extrabold text-sm">{t}</p><p className="text-xs text-gray-500 mt-1">{s}</p></div>

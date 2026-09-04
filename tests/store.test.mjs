@@ -21,6 +21,23 @@ test("no public admin link", () => {
   const ft = readFileSync(new URL("../src/components/Footer.tsx", import.meta.url), "utf8");
   assert.doesNotMatch(ft, /href="\/admin/);
 });
+test("Planet Interio branding across public chrome", () => {
+  const h = readFileSync(new URL("../src/components/Header.tsx", import.meta.url), "utf8");
+  assert.match(h, /Planet Interio/);
+  assert.match(h, /pi-mark\.svg/);
+  assert.doesNotMatch(h, /imphalfurniture/);
+  const ft = readFileSync(new URL("../src/components/Footer.tsx", import.meta.url), "utf8");
+  assert.match(ft, /wa\.me\/918974499282/);
+  assert.match(ft, /CONTACT US/);
+  assert.doesNotMatch(ft, /imphalfurniture/);
+  const site = readFileSync(new URL("../src/lib/store.ts", import.meta.url), "utf8");
+  assert.match(site, /9429691445/);
+  assert.match(site, /8974499282/);
+  assert.match(site, /Canchipur/);
+  assert.match(site, /Planet Interio/);
+  const about = readFileSync(new URL("../src/app/about/page.tsx", import.meta.url), "utf8");
+  assert.match(about, /Your Style, Our Design/);
+});
 test("PWA manifest standalone + INR + zones", () => {
   const m = JSON.parse(readFileSync(new URL("../public/manifest.webmanifest", import.meta.url), "utf8"));
   assert.equal(m.display, "standalone");

@@ -18,7 +18,7 @@ export function AuthForm({ mode }: { mode: "login" | "register" | "forgot" }) {
       <input name="email" required type="email" placeholder="Email" className="border rounded-lg px-3 py-2.5 w-full" />
       {mode !== "forgot" && <input name="password" required type="password" minLength={8} placeholder="Password (8+ chars)" className="border rounded-lg px-3 py-2.5 w-full" />}
       {mode === "register" && <input name="confirm" required type="password" placeholder="Confirm password" className="border rounded-lg px-3 py-2.5 w-full" />}
-      <button className="w-full bg-[#FFD400] font-extrabold rounded-full py-3 min-h-[48px]">{mode === "login" ? "Sign In" : mode === "register" ? "Create Account" : "Send Reset Link"}</button>
+      <button className="w-full bg-[#D21F26] text-white font-extrabold rounded-full py-3 min-h-[48px]">{mode === "login" ? "Sign In" : mode === "register" ? "Create Account" : "Send Reset Link"}</button>
       {msg && <p role="status" className="text-center text-gray-600">{msg}</p>}
       {mode === "login" && <p className="text-center"><a className="underline" href="/forgot-password">Forgot password?</a> · <a className="underline" href="/register">Create account</a></p>}
     </form>

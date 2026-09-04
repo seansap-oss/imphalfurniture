@@ -5,7 +5,7 @@ export default {
     extend: {
       colors: {
         brand: {
-          yellow: "var(--color-primary, #FFD400)",
+          yellow: "var(--color-primary, #D21F26)",
           charcoal: "#171717",
           ink: "#111111",
           offwhite: "#F7F5F0",

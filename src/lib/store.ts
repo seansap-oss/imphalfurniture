@@ -2,11 +2,14 @@ export const INR = (n: number) =>
   "₹" + Math.round(n).toLocaleString("en-IN");
 
 export const SITE = {
-  name: "imphalfurniture",
-  display: "imphal furniture",
-  phone: "+91 385 241 0000",
-  email: "care@imphalfurniture.com",
-  address: "Kwakeithel Bazar, Imphal West, Manipur 795001",
+  name: "Planet Interio",
+  display: "PLANET INTERIO",
+  tagline: "Furniture for good living",
+  phone: "+91 9429691445",
+  whatsapp: "+91 8974499282",
+  email: "care@planetinterio.in",
+  address: "Planet Interio, Canchipur, Near Iland Nissan, Imphal, India 795003",
+  workshop: "Langthabal Kunja, near Standard Robarth Higher Secondary School, Canchipur, Manipur, India",
   hours: "Mon–Sat 10am–8pm · Sun 11am–6pm",
 };
 
@@ -47,7 +50,7 @@ export function deliveryFee(pin: string, subtotal: number, bulky = true): number
 // Location-aware stock: core Imphal store holds most stock; warehouse is backup.
 export function stockFor(pin: string, baseStock: number): { available: string; eta: string; pickup: boolean } {
   const z = zoneForPin(pin);
-  if (z.id === "imphal-core") return { available: baseStock > 0 ? `In stock at Imphal Main Store` : "Backorder — 7 days", eta: "Delivery tomorrow", pickup: true };
+  if (z.id === "imphal-core") return { available: baseStock > 0 ? `In stock at Planet Interio, Canchipur` : "Backorder — 7 days", eta: "Delivery tomorrow", pickup: true };
   if (z.id === "imphal-extended") return { available: baseStock > 5 ? "In stock — Imphal dispatch" : "Ships from warehouse in 2 days", eta: "1–2 days", pickup: true };
-  return { available: baseStock > 10 ? "Ships from Imphal Warehouse" : "Made-to-order / 7–10 days", eta: z.days, pickup: false };
+  return { available: baseStock > 10 ? "Ships from Planet Interio workshop" : "Made-to-order / 7–10 days", eta: z.days, pickup: false };
 }

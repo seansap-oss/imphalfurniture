@@ -7,7 +7,7 @@ export default function AdminShell({ children, title }: { children: React.ReactN
   return (
     <div className="min-h-screen lg:grid lg:grid-cols-[240px_1fr]">
       <aside className={`bg-[#111] text-white p-4 fixed lg:static inset-y-0 left-0 w-64 z-50 overflow-auto transition ${open ? "" : "hidden lg:block"}`}>
-        <p className="font-extrabold text-[#FFD400]">imphalfurniture · admin</p>
+        <p className="font-extrabold text-[#FF6B6B]">Planet Interio · admin</p>
         <nav className="mt-4 space-y-1 text-sm" aria-label="Admin">
           {NAV.map(([t, h]) => <Link key={h} href={h} onClick={() => setOpen(false)} className="block px-3 py-2.5 rounded-lg hover:bg-white/10 min-h-[44px]">{t}</Link>)}
         </nav>

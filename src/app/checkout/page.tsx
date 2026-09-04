@@ -10,7 +10,7 @@ export default function CheckoutPage() {
   const sub = cart.subtotal();
   const fee = cart.lines.length ? deliveryFee(form.pin || "795001", sub) : 0;
   const set = (k: string, v: string) => setForm((f) => ({ ...f, [k]: v }));
-  if (done) return <div className="max-w-2xl mx-auto p-10 text-center"><p className="text-5xl">✅</p><h1 className="text-2xl font-extrabold mt-3">Order confirmed</h1><p className="text-sm text-gray-600 mt-1">Order <strong>{done}</strong> · We emailed your invoice. {zoneForPin(form.pin).label} dispatch in {zoneForPin(form.pin).days}.</p><a href="/account/orders" className="inline-block mt-5 bg-[#FFD400] font-bold px-8 py-3 rounded-full">Track in My Orders</a></div>;
+  if (done) return <div className="max-w-2xl mx-auto p-10 text-center"><p className="text-5xl">✅</p><h1 className="text-2xl font-extrabold mt-3">Order confirmed</h1><p className="text-sm text-gray-600 mt-1">Order <strong>{done}</strong> · We emailed your invoice. {zoneForPin(form.pin).label} dispatch in {zoneForPin(form.pin).days}.</p><a href="/account/orders" className="inline-block mt-5 bg-[#D21F26] text-white font-bold px-8 py-3 rounded-full">Track in My Orders</a></div>;
   return (
     <div className="max-w-7xl mx-auto px-3 sm:px-4 py-6 grid lg:grid-cols-[1fr_360px] gap-6">
       <form className="space-y-4" onSubmit={async (e) => {
@@ -31,7 +31,7 @@ export default function CheckoutPage() {
         <section className="bg-white border rounded-2xl p-4 text-sm">
           <h2 className="font-extrabold mb-2">2 · Fulfilment</h2>
           <div className="flex gap-2 flex-wrap">
-            {[["delivery", "Home Delivery"], ["pickup", "Click & Collect — Imphal Main Store"]].map(([v, l]) => (
+            {[["delivery", "Home Delivery"], ["pickup", "Click & Collect — Planet Interio Store, Canchipur"]].map(([v, l]) => (
               <button type="button" key={v} onClick={() => set("mode", v)} aria-pressed={form.mode === v} className={`border rounded-full px-4 py-2 min-h-[44px] ${form.mode === v ? "bg-black text-white font-bold" : ""}`}>{l}</button>
             ))}
           </div>
@@ -45,7 +45,7 @@ export default function CheckoutPage() {
           </div>
           <p className="text-xs text-gray-500 mt-2">Payments are processed via Razorpay/Stripe abstraction server-side. Card numbers never touch our servers in this build; COD available in {zoneForPin(form.pin).cod ? "your zone" : "Imphal/Manipur only — please pick UPI"}.</p>
         </section>
-        <button className="bg-[#FFD400] font-extrabold rounded-full px-8 py-3 min-h-[48px]">Place Order · {INR(sub + fee)}</button>
+        <button className="bg-[#D21F26] text-white font-extrabold rounded-full px-8 py-3 min-h-[48px]">Place Order · {INR(sub + fee)}</button>
       </form>
       <aside className="bg-white border rounded-2xl p-5 h-fit text-sm">
         <h2 className="font-extrabold mb-2">Order summary</h2>

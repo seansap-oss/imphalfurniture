@@ -13,7 +13,7 @@ export default function CartPage() {
         <p className="text-5xl">🛋️</p>
         <h1 className="text-2xl font-extrabold mt-3">Your cart is empty</h1>
         <p className="text-sm text-gray-500 mt-1">Beautiful rooms start with a single piece.</p>
-        <Link href="/" className="inline-block mt-5 bg-[#FFD400] font-extrabold px-8 py-3 rounded-full">Explore Furniture</Link>
+        <Link href="/" className="inline-block mt-5 bg-[#D21F26] text-white font-extrabold px-8 py-3 rounded-full">Explore Furniture</Link>
       </div>
     );
   return (
@@ -45,7 +45,7 @@ export default function CartPage() {
         <p className="flex justify-between"><span>Subtotal</span><strong>{INR(sub)}</strong></p>
         <p className="flex justify-between"><span>Delivery</span><strong>{fee === 0 ? "FREE" : INR(fee)}</strong></p>
         <p className="flex justify-between text-lg"><span>Total</span><strong>{INR(sub + fee)}</strong></p>
-        <Link href="/checkout" className="block text-center bg-[#FFD400] font-extrabold rounded-full py-3 mt-2">Checkout Securely</Link>
+        <Link href="/checkout" className="block text-center bg-[#D21F26] text-white font-extrabold rounded-full py-3 mt-2">Checkout Securely</Link>
         <Link href="/" className="block text-center underline mt-1">Continue shopping</Link>
       </aside>
     </div>

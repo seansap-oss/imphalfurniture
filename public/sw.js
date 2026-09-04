@@ -1,4 +1,4 @@
-const CACHE = "if-v1";
+const CACHE = "if-v2";
 const CORE = ["/", "/offline", "/manifest.webmanifest"];
 self.addEventListener("install", (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(CORE)).then(() => self.skipWaiting()));

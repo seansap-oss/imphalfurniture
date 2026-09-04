@@ -12,7 +12,7 @@ async function audit(action: string, resource: string) {
 }
 export async function POST(req: Request) {
   const { email, password } = await req.json().catch(() => ({}));
-  const adminEmail = process.env.ADMIN_EMAIL || "admin@imphalfurniture.com";
+  const adminEmail = process.env.ADMIN_EMAIL || "admin@planetinterio.in";
   const adminPass = process.env.ADMIN_PASSWORD || "ChangeMe123!";
   const admins = await readJSON<any[]>("admins.json", []);
   const found = admins.find((a) => a.email === email);

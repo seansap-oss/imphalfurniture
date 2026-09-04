@@ -5,20 +5,21 @@ import Footer from "@/components/Footer";
 import { SITE } from "@/lib/store";
 
 export const metadata: Metadata = {
-  title: { default: "imphal furniture | Furniture for every room in Imphal", template: "%s | imphal furniture" },
-  description: "Sofas, beds, dining, storage & more with Imphal-first delivery across Manipur. Great value, local support, secure payment.",
+  title: { default: "Planet Interio | Furniture for good living in Imphal", template: "%s | Planet Interio" },
+  description: "Planet Interio, Canchipur Imphal — affordable modern home & office furniture. Sofas, beds, dining, storage & more with Imphal-first delivery. Prices in INR.",
   manifest: "/manifest.webmanifest",
-  openGraph: { type: "website", siteName: "imphalfurniture", title: "imphal furniture" },
+  openGraph: { type: "website", siteName: "Planet Interio", title: "Planet Interio" },
   robots: { index: true, follow: true }
 };
-export const viewport: Viewport = { themeColor: "#FFD400", width: "device-width", initialScale: 1 };
+export const viewport: Viewport = { themeColor: "#D21F26", width: "device-width", initialScale: 1 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const org = { "@context": "https://schema.org", "@type": "Organization", name: SITE.name, url: "https://imphalfurniture.com" };
+  const org = { "@context": "https://schema.org", "@type": "FurnitureStore", name: "Planet Interio", url: "https://imphalfurniture.vercel.app", telephone: "+91 9429691445", address: "Canchipur, Imphal, India 795003" };
   return (
     <html lang="en-IN">
       <head>
         <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+        <link rel="icon" type="image/png" href="/icons/icon-192.png" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(org) }} />
       </head>
       <body className="min-h-screen flex flex-col">

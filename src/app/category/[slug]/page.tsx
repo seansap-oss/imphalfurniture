@@ -38,11 +38,11 @@ export default function CategoryPage({ params, searchParams }: { params: { slug:
             </nav>
           </div>
           {list.length === 0 ? (
-            <div className="bg-white rounded-2xl p-10 text-center border"><p className="font-extrabold text-lg">No products match those filters</p><p className="text-sm text-gray-500 mt-1">Try clearing a filter or two.</p><a href={`/category/${params.slug}`} className="inline-block mt-4 bg-[#FFD400] font-bold px-6 py-2.5 rounded-full">Clear filters</a></div>
+            <div className="bg-white rounded-2xl p-10 text-center border"><p className="font-extrabold text-lg">No products match those filters</p><p className="text-sm text-gray-500 mt-1">Try clearing a filter or two.</p><a href={`/category/${params.slug}`} className="inline-block mt-4 bg-[#D21F26] text-white font-bold px-6 py-2.5 rounded-full">Clear filters</a></div>
           ) : (
             <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-3">{list.slice(0, 60).map((p) => <ProductCard key={p.slug} p={p} />)}</div>
           )}
-          <p className="text-sm text-gray-500 mt-6">Showing up to 60 of {list.length}. Use search and filters to narrow down. Free Imphal-core delivery on selected orders; Click & Collect available at Imphal Main Store.</p>
+          <p className="text-sm text-gray-500 mt-6">Showing up to 60 of {list.length}. Use search and filters to narrow down. Free Imphal-core delivery on selected orders; Click & Collect available at the Planet Interio store, Canchipur.</p>
         </div>
       </div>
     </div>

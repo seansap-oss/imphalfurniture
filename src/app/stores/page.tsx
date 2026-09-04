@@ -1,2 +1,3 @@
 import Simple from "@/components/Simple";
-export default function Stores() { return <Simple title="Store Locations"><p><strong>Imphal Main Store</strong> — Kwakeithel Bazar, Imphal West 795001. Open Mon–Sat 10–8, Sun 11–6. Click & Collect + Furniture Delivery.</p><p><strong>Imphal Warehouse</strong> — dispatch & bulk pickup, same hours.</p></Simple>; }
+import { SITE } from "@/lib/store";
+export default function Stores() { return <Simple title="Store Locations"><p><strong>Planet Interio — Main Store</strong> — {SITE.address}. Open {SITE.hours}. Click & Collect + Furniture Delivery.</p><p><strong>Workshop</strong> — {SITE.workshop} (customised furniture & onsite installation).</p><p>📱 {SITE.phone} · 💬 WhatsApp {SITE.whatsapp}</p></Simple>; }

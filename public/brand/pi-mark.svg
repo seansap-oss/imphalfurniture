@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Planet Interio logo">
+  <defs>
+    <linearGradient id="pi-red" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FF3B3B"/><stop offset=".45" stop-color="#E01313"/><stop offset="1" stop-color="#8F0000"/>
+    </linearGradient>
+    <linearGradient id="pi-chrome" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/><stop offset=".35" stop-color="#D7DBE0"/><stop offset=".55" stop-color="#8E939B"/><stop offset=".72" stop-color="#F1F3F5"/><stop offset="1" stop-color="#B9BEC6"/>
+    </linearGradient>
+    <linearGradient id="pi-ring" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F4F5F7"/><stop offset=".5" stop-color="#9AA0A8"/><stop offset="1" stop-color="#E8EAED"/>
+    </linearGradient>
+  </defs>
+  <rect x="6" y="6" width="188" height="188" rx="44" fill="url(#pi-ring)"/>
+  <rect x="14" y="14" width="172" height="172" rx="38" fill="url(#pi-red)"/>
+  <rect x="14" y="14" width="172" height="86" rx="38" fill="#FFFFFF" opacity=".14"/>
+  <text x="100" y="146" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="104" letter-spacing="2" fill="url(#pi-chrome)" stroke="#5A0000" stroke-width="1.5">PI</text>
+</svg>

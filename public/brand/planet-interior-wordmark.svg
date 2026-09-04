@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" role="img" aria-label="Planet Interior — Furniture for good living">
+  <defs>
+    <linearGradient id="wm-red" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F42121"/><stop offset=".55" stop-color="#C80D0D"/><stop offset="1" stop-color="#8F0000"/>
+    </linearGradient>
+  </defs>
+  <text x="600" y="150" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="118" letter-spacing="6" fill="url(#wm-red)">PLANET INTERIOR</text>
+  <rect x="60" y="196" width="300" height="5" fill="url(#wm-red)"/>
+  <rect x="840" y="196" width="300" height="5" fill="url(#wm-red)"/>
+  <text x="600" y="212" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="56" fill="#3A3A3A">Furniture for good living</text>
+</svg>

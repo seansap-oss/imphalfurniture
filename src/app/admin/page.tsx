@@ -19,7 +19,7 @@ export default function AdminGate() {
         <p className="text-xs text-gray-500">Restricted area. Credentials from environment bootstrap.</p>
         <input name="email" type="email" required placeholder="Email" className="border rounded-lg px-3 py-2.5 w-full" aria-label="Email" />
         <input name="password" type="password" required placeholder="Password" className="border rounded-lg px-3 py-2.5 w-full" aria-label="Password" />
-        <button className="w-full bg-[#FFD400] font-extrabold rounded-full py-3">Sign In</button>
+        <button className="w-full bg-[#D21F26] text-white font-extrabold rounded-full py-3">Sign In</button>
         {err && <p role="alert" className="text-red-600 text-sm">{err}</p>}
       </form>
     </div>

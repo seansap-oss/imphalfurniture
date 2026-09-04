@@ -22,9 +22,14 @@ export default function Header() {
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 py-3 flex items-center gap-3">
           <button className="lg:hidden min-h-[44px] min-w-[44px] text-2xl" aria-label="Open menu" onClick={() => setOpen(true)}>☰</button>
-          <Link href="/" className="flex items-center gap-2 font-extrabold text-lg sm:text-2xl tracking-tight" aria-label="imphalfurniture home">
-            <span className="bg-[#FFD400] rounded-lg w-9 h-9 grid place-items-center text-black">◧</span>
-            <span><span className="text-black">imphal</span><span className="text-black/70">furniture</span></span>
+          <Link href="/" className="flex items-center gap-2.5 tracking-tight" aria-label="Planet Interio home">
+            {/* Golden-ratio lockup: 40px mark in a ~65px header (65 / φ ≈ 40) */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/brand/pi-mark.svg" alt="Planet Interio — PI logo" className="h-10 w-10 shrink-0" />
+            <span className="leading-none">
+              <span className="block font-extrabold text-lg sm:text-[22px] text-[#1a1a1a]">PLANET <span className="text-[#D21F26]">INTERIO</span></span>
+              <span className="hidden sm:block text-[11px] italic font-serif text-gray-500">Furniture for good living</span>
+            </span>
           </Link>
           <div className="hidden md:block flex-1"><SearchBar /></div>
           <div className="ml-auto flex items-center gap-1 sm:gap-3">
@@ -35,7 +40,7 @@ export default function Header() {
             </label>
             <Link href="/account" className="min-h-[44px] min-w-[44px] grid place-items-center" aria-label="Account">👤</Link>
             <Link href="/account/wishlist" className="relative min-h-[44px] min-w-[44px] grid place-items-center" aria-label="Wishlist">♡{wish.slugs.length > 0 && <span className="absolute top-1 right-0 bg-black text-white text-[10px] rounded-full px-1">{wish.slugs.length}</span>}</Link>
-            <Link href="/cart" className="relative min-h-[44px] min-w-[44px] grid place-items-center font-bold" aria-label="Cart">🛒{count > 0 && <span className="absolute top-1 right-0 bg-[#FFD400] text-black text-[10px] rounded-full px-1">{count}</span>}</Link>
+            <Link href="/cart" className="relative min-h-[44px] min-w-[44px] grid place-items-center font-bold" aria-label="Cart">🛒{count > 0 && <span className="absolute top-1 right-0 bg-[#D21F26] text-white text-[10px] rounded-full px-1">{count}</span>}</Link>
             <button className="md:hidden min-h-[44px] min-w-[44px]" aria-label="Search" onClick={() => setMobileSearch((v) => !v)}>🔍</button>
           </div>
         </div>
@@ -57,7 +62,7 @@ export default function Header() {
           <div className="absolute inset-0 bg-black/50" onClick={() => setOpen(false)} />
           <div className="absolute left-0 top-0 bottom-0 w-[86%] max-w-sm bg-white overflow-y-auto p-4">
             <div className="flex justify-between items-center mb-3">
-              <strong>imphalfurniture</strong>
+              <strong>Planet Interio</strong>
               <button className="min-h-[44px] min-w-[44px]" aria-label="Close menu" onClick={() => setOpen(false)}>✕</button>
             </div>
             {CATEGORIES.map((c) => (

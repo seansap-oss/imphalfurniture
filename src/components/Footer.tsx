@@ -38,7 +38,10 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className="border-t border-white/10 text-center text-xs text-white/60 py-4 px-4">© 2026 {SITE.name} · {SITE.tagline} · Prices in INR (₹) inclusive of GST where applicable.</div>
+      <div className="border-t border-white/10 text-center text-xs text-white/60 py-4 px-4">
+        <p>© 2026 {SITE.name} · {SITE.tagline} · Prices in INR (₹) inclusive of GST where applicable.</p>
+        <p className="mt-1">Created by <a href="https://www.avitsolutions.tech" target="_blank" rel="noopener" className="underline hover:text-white">AviT Solutions</a> · 📞 <a href="tel:+919856575064" className="underline hover:text-white">9856575064</a></p>
+      </div>
     </footer>
   );
 }

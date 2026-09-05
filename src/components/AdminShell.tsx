@@ -21,9 +21,11 @@ export default function AdminShell({ children, title }: { children: React.ReactN
   const [me, setMe] = useState<any>(null);
   const [q, setQ] = useState("");
   const [notes, setNotes] = useState(0);
+  const [sync, setSync] = useState<any>(null);
   useEffect(() => {
     fetch("/api/admin/session").then((r) => r.json()).then((j) => setMe(j.ok ? j : null)).catch(() => {});
     fetch("/api/cms?collection=enquiries").then((r) => r.json()).then((j) => setNotes((j.data || []).filter((x: any) => x.status === "new").length)).catch(() => {});
+    fetch("/api/cms").then((r) => r.json()).then((j) => setSync(j.sync || null)).catch(() => {});
   }, []);
   const go = () => {
     if (!q.trim()) return;
@@ -49,6 +51,12 @@ export default function AdminShell({ children, title }: { children: React.ReactN
         <div className="bg-white border-b px-3 sm:px-4 py-2.5 flex items-center gap-2 sm:gap-3 sticky top-0 z-30">
           <button className="lg:hidden min-h-[44px] min-w-[44px]" aria-label="Admin menu" onClick={() => setOpen((v) => !v)}>☰</button>
           <h1 className="font-extrabold truncate">{title}</h1>
+          {sync && (
+            <span title={sync.hint} className={`hidden md:inline-flex items-center gap-1.5 text-xs font-bold rounded-full px-2.5 py-1 ${sync.durable ? "bg-green-100 text-green-800" : "bg-amber-100 text-amber-800"}`}>
+              <span className={`w-2 h-2 rounded-full ${sync.durable ? "bg-green-600" : "bg-amber-500"}`} />
+              {sync.durable ? "Live sync" : "Local only"}
+            </span>
+          )}
           <div className="ml-auto flex items-center gap-2">
             <form onSubmit={(e) => { e.preventDefault(); go(); }} className="hidden sm:block" role="search">
               <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search products…" aria-label="Global search" className="border rounded-full px-3 py-1.5 text-sm w-44" />

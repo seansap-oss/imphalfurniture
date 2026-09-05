@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { revalidatePath } from "next/cache";
 import { getCMS, patchCMS, newId, slugify, type CMS } from "@/lib/cms";
+import { syncStatus } from "@/lib/cms-store";
 import { adminSession } from "@/lib/admin-auth";
 
 const REVALIDATE: Record<string, string[]> = {
@@ -35,7 +36,7 @@ export async function GET(req: Request) {
   }
   const s = await adminSession();
   if (!s) return NextResponse.json({ ok: false, error: "Unauthorized" }, { status: 401 });
-  return NextResponse.json({ ok: true, data: cms });
+  return NextResponse.json({ ok: true, data: cms, sync: syncStatus() });
 }
 
 export async function PUT(req: Request) {

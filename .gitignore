@@ -21,3 +21,4 @@ android/build
 android/.gradle
 android/build.log
 *.idsig
+tests/cms-store-compiled

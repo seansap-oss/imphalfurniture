@@ -1,10 +1,7 @@
-import { promises as fs } from "fs";
-import path from "path";
 import { PRODUCTS, CATEGORIES, BRANDS, HEROES, type Product } from "./catalog";
+import { storeLoad, storeSave } from "./cms-store";
 
 // Single-file CMS store. Local dev persists to data/cms.json.
-// Production (Vercel) uses /tmp best-effort — connect PostgreSQL for durable CMS.
-const FILE = process.env.VERCEL ? path.join("/tmp", "if-data", "cms.json") : path.join(process.cwd(), "data", "cms.json");
 
 export type HeroSlide = {
   id: string; title: string; sub: string; desc?: string;
@@ -96,19 +93,14 @@ export type CMS = ReturnType<typeof defaultCMS>;
 
 let cache: CMS | null = null;
 export async function getCMS(): Promise<CMS> {
-  if (cache) return cache;
-  try {
-    await fs.mkdir(path.dirname(FILE), { recursive: true });
-    const raw = await fs.readFile(FILE, "utf8");
-    const parsed = JSON.parse(raw);
-    cache = { ...defaultCMS(), ...parsed };
-  } catch { cache = defaultCMS(); }
+  // No stale in-memory cache: always read the shared store so admin edits
+  // are immediately visible to the storefront on every instance.
+  cache = await storeLoad(defaultCMS);
   return cache!;
 }
 export async function saveCMS(cms: CMS) {
   cache = cms;
-  try { await fs.mkdir(path.dirname(FILE), { recursive: true }); await fs.writeFile(FILE, JSON.stringify(cms, null, 2)); }
-  catch (e) { console.warn("[cms] persist unavailable:", (e as Error).message); }
+  await storeSave(cms);
 }
 export async function patchCMS(by: string, action: string, fn: (c: CMS) => void, detail?: string, snap?: { prev?: any; collection?: string }) {
   const c = await getCMS();

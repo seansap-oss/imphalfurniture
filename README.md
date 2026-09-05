@@ -21,8 +21,11 @@ Admin: http://localhost:3000/admin (no public link to it — by design).
 
 ## Data & storage
 - Catalogue (300 products, 14 brands, taxonomy) is generated in `src/lib/catalog.ts`.
-- Orders/users/audit persist as JSON in `data/` locally (ephemeral `/tmp` on Vercel — production needs PostgreSQL via `prisma/schema.prisma`).
-- Uploads go to `public/uploads/` via drag/drop in admin (`/api/admin/media`).
+- CMS content lives in one JSON document served by `src/lib/cms-store.ts`:
+  - **Local dev:** `data/cms.json` (checked into nothing — gitignored — edit freely).
+  - **Production:** requires a real Postgres `DATABASE_URL` (free tiers: Neon, Supabase, or Vercel Postgres). Without it the app falls back to ephemeral per-instance storage and admin edits will NOT reach the live site. The admin topbar shows **Live sync** (green, Postgres) or **Local only** (amber, file) so staff always know.
+- The store auto-creates its `cms_store` table on first use — no migrations to run.
+- Uploads go to `public/uploads/` via drag/drop in admin (`/api/admin/media`). For durable production media, connect S3/R2-compatible object storage.
 
 ## Android app
 Trusted-Web-Activity wrapper in `android/` (`twa-manifest.json`, package `com.imphalfurniture.twa`). Release keystore is **not** in git — back up `android/android.keystore`. Rebuild after web changes:

@@ -26,8 +26,8 @@ test("Planet Interio branding across public chrome", () => {
   assert.match(h, /Planet Interio/);
   assert.match(h, /pi-mark\.svg/);
   assert.doesNotMatch(h, /imphalfurniture/);
-  const ft = readFileSync(new URL("../src/components/Footer.tsx", import.meta.url), "utf8");
-  assert.match(ft, /wa\.me\/918974499282/);
+  const ft = readFileSync(new URL("../src/components/FooterContent.tsx", import.meta.url), "utf8");
+  assert.match(ft, /wa\.me\//);
   assert.match(ft, /CONTACT US/);
   assert.doesNotMatch(ft, /imphalfurniture/);
   const site = readFileSync(new URL("../src/lib/store.ts", import.meta.url), "utf8");

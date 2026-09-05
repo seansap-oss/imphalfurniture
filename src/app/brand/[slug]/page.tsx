@@ -1,9 +1,12 @@
 import { BRANDS, PRODUCTS } from "@/lib/catalog";
+import { mergedBrands, mergedProducts } from "@/lib/cms";
 import ProductCard from "@/components/ProductCard";
-export default function BrandPage({ params }: { params: { slug: string } }) {
-  const b = BRANDS.find((x) => x.slug === params.slug);
+export default async function BrandPage({ params }: { params: { slug: string } }) {
+  const brands = await mergedBrands().catch(() => BRANDS);
+  const b = brands.find((x: any) => x.slug === params.slug) || BRANDS.find((x) => x.slug === params.slug);
   if (!b) return <div className="max-w-7xl mx-auto p-8"><h1 className="text-2xl font-extrabold">Brand not found</h1></div>;
-  const list = PRODUCTS.filter((p) => p.brand === b.name);
+  const all = await mergedProducts().catch(() => PRODUCTS);
+  const list = all.filter((p) => p.brand === (b as any).name);
   return (
     <div className="max-w-7xl mx-auto px-3 sm:px-4 py-6">
       <h1 className="text-3xl font-extrabold">{b.name}</h1>

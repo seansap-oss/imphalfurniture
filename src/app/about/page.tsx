@@ -1,5 +1,17 @@
 import Simple from "@/components/Simple";
-export default function About() {
+import { getCMS } from "@/lib/cms";
+
+export default async function About() {
+  const cms = await getCMS().catch(() => null);
+  const override = (cms?.pages || []).find((x: any) => x.slug === "about-us" && x.status === "published");
+  if (override) {
+    return (
+      <Simple title={override.title}>
+        {override.image && <>{/* eslint-disable-next-line @next/next/no-img-element */}<img src={override.image} alt={override.title} className="w-full max-w-xl h-auto rounded-2xl" /></>}
+        <div className="whitespace-pre-line">{override.body}</div>
+      </Simple>
+    );
+  }
   return (
     <Simple title="About Us – Planet Interio">
       {/* eslint-disable-next-line @next/next/no-img-element */}

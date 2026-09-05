@@ -11,7 +11,7 @@ export default function AdminGate() {
       <form className="bg-white rounded-2xl p-6 w-full max-w-sm space-y-3" onSubmit={async (e) => {
         e.preventDefault();
         const fd = new FormData(e.currentTarget);
-        const res = await fetch("/api/admin/session", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email: fd.get("email"), password: fd.get("password") }) });
+        const res = await fetch("/api/admin/session", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email: fd.get("email"), password: fd.get("password"), remember: fd.get("remember") === "on" }) });
         const j = await res.json();
         if (j.ok) window.location.href = "/admin/dashboard"; else setErr(j.error || "Login failed");
       }}>
@@ -19,7 +19,9 @@ export default function AdminGate() {
         <p className="text-xs text-gray-500">Restricted area. Credentials from environment bootstrap.</p>
         <input name="email" type="email" required placeholder="Email" className="border rounded-lg px-3 py-2.5 w-full" aria-label="Email" />
         <input name="password" type="password" required placeholder="Password" className="border rounded-lg px-3 py-2.5 w-full" aria-label="Password" />
+        <label className="flex items-center gap-2 text-sm"><input type="checkbox" name="remember" defaultChecked /> Remember me</label>
         <button className="w-full bg-[#D21F26] text-white font-extrabold rounded-full py-3">Sign In</button>
+        <p className="text-center text-sm"><button type="button" className="underline" onClick={async () => { const em = prompt("Enter your admin email for a reset link:"); if (em) { await fetch("/api/admin/session", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email: em, password: "__forgot__" }) }); setErr("If that account exists, reset instructions were sent."); } }}>Forgot password?</button></p>
         {err && <p role="alert" className="text-red-600 text-sm">{err}</p>}
       </form>
     </div>

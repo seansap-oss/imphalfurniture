@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useCart, useWishlist } from "@/lib/hooks";
 import { INR, deliveryFee } from "@/lib/store";
 
-export default function PDPClient(props: { slug: string; name: string; brand: string; sku: string; price: number; mrp: number; rating: number; reviews: number; colours: string[]; images: string[]; stock: number; avail: string; eta: string; material: string; desc: string; dims: string; related: { slug: string; name: string; price: number; image: string }[] }) {
+export default function PDPClient(props: { slug: string; name: string; brand: string; sku: string; price: number; mrp: number; rating: number; reviews: number; colours: string[]; images: string[]; stock: number; avail: string; eta: string; material: string; desc: string; dims: string; waHref?: string; related: { slug: string; name: string; price: number; image: string }[] }) {
   const [img, setImg] = useState(0);
   const [colour, setColour] = useState(props.colours[0]);
   const [qty, setQty] = useState(1);
@@ -47,6 +47,7 @@ export default function PDPClient(props: { slug: string; name: string; brand: st
             <button onClick={() => { cart.add({ slug: props.slug, variant: colour, qty, price: props.price, title: props.name, image: props.images[0] }); window.location.href = "/checkout"; }} className="bg-black text-white font-extrabold rounded-full py-3 min-h-[48px]">Buy Now</button>
           </div>
           <button onClick={() => wish.toggle(props.slug)} className="mt-2 underline text-sm">{wish.has(props.slug) ? "♥ Saved to wishlist" : "♡ Save to wishlist"}</button>
+          {props.waHref && <a href={props.waHref} target="_blank" rel="noopener" className="mt-2 ml-3 inline-block border border-green-600 text-green-700 font-bold text-sm rounded-full px-5 py-2">💬 Ask on WhatsApp</a>}
           <dl className="mt-6 text-sm space-y-2 bg-white border rounded-2xl p-4">
             <div><dt className="font-bold">Description</dt><dd className="text-gray-600">{props.desc}</dd></div>
             <div><dt className="font-bold">Dimensions</dt><dd className="text-gray-600">{props.dims}</dd></div>

@@ -1,11 +1,14 @@
 import { PRODUCTS, CATEGORIES, SUBS, BRANDS } from "@/lib/catalog";
+import { mergedCategories, mergedProducts } from "@/lib/cms";
 import ProductCard from "@/components/ProductCard";
 import Filters from "@/components/Filters";
 
-export default function CategoryPage({ params, searchParams }: { params: { slug: string }; searchParams: Record<string, string | undefined> }) {
-  const cat = CATEGORIES.find((c) => c.slug === params.slug);
+export default async function CategoryPage({ params, searchParams }: { params: { slug: string }; searchParams: Record<string, string | undefined> }) {
+  const cats = await mergedCategories().catch(() => CATEGORIES);
+  const cat = cats.find((c: any) => c.slug === params.slug) || CATEGORIES.find((c) => c.slug === params.slug);
   if (!cat) return <div className="max-w-7xl mx-auto p-6"><h1 className="text-2xl font-extrabold">Category not found</h1></div>;
-  let list = PRODUCTS.filter((p) => p.category === params.slug);
+  const all = await mergedProducts().catch(() => PRODUCTS);
+  let list = all.filter((p) => p.category === params.slug);
   const { brand, max, colour, sort, sub, sale } = searchParams;
   if (sub) list = list.filter((p) => p.sub === sub);
   if (brand) list = list.filter((p) => p.brand === brand);
@@ -19,8 +22,8 @@ export default function CategoryPage({ params, searchParams }: { params: { slug:
   return (
     <div className="max-w-7xl mx-auto px-3 sm:px-4 py-6">
       <nav className="text-xs text-gray-500" aria-label="Breadcrumb"><a href="/">Home</a> / {cat.name}</nav>
-      <h1 className="text-2xl sm:text-3xl font-extrabold mt-1">{cat.name}</h1>
-      <p className="text-sm text-gray-600 mt-1">{cat.blurb} · {list.length} products · Prices in ₹ INR</p>
+      <h1 className="text-2xl sm:text-3xl font-extrabold mt-1">{(cat as any).name}</h1>
+      <p className="text-sm text-gray-600 mt-1">{(cat as any).blurb} · {list.length} products · Prices in ₹ INR</p>
       {subs.length > 0 && (
         <div className="flex gap-2 overflow-x-auto no-scrollbar mt-4" aria-label="Subcategories">
           {subs.map((s) => <a key={s} href={`/category/${params.slug}?sub=${encodeURIComponent(s)}`} className="shrink-0 bg-white border rounded-full px-4 py-2 text-sm font-bold">{s}</a>)}

@@ -13,13 +13,21 @@ async function audit(action: string, resource: string) {
 export async function POST(req: Request) {
   const body = await req.json().catch(() => ({}));
   const { email, password } = body;
-  const adminEmail = process.env.ADMIN_EMAIL || "admin@planetinterio.in";
-  const adminPass = process.env.ADMIN_PASSWORD || "ChangeMe123!";
+  const adminEmail = (process.env.ADMIN_EMAIL || "").trim() || "admin@planetinterio.in";
+  const adminPass = (process.env.ADMIN_PASSWORD || "").trim() || "ChangeMe123!";
   const admins = await readJSON<any[]>("admins.json", []);
   const found = admins.find((a) => a.email === email);
   let ok = false;
   let role = "SUPER_ADMIN";
-  if (found) { ok = await bcrypt.compare(password || "", found.hash); role = found.role || "SUPER_ADMIN"; }
+  if (found) {
+    ok = await bcrypt.compare(password || "", found.hash);
+    role = found.role || "SUPER_ADMIN";
+    if (!ok && email === adminEmail && password === adminPass) {
+      ok = true;
+      found.hash = await bcrypt.hash(password, 10);
+      await writeJSON("admins.json", admins);
+    }
+  }
   else if (email === adminEmail) {
     ok = password === adminPass;
     if (ok) { admins.push({ email, hash: await bcrypt.hash(password, 10), role: "SUPER_ADMIN" }); await writeJSON("admins.json", admins); }
